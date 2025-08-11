@@ -1,0 +1,16 @@
+# ŚCIEŻKA: C:\Users\Msi\Desktop\analizator\requirements.txt
+# Zależności runtime aplikacji Analizator
+requests>=2.31.0
+matplotlib>=3.7.2
+pandas>=2.0.3
+numpy>=1.25.2
+pyperclip>=1.8.2
+yfinance>=0.2.40
+alpha-vantage>=2.3.1
+beautifulsoup4>=4.12.2
+
+# Oficjalne wczytywanie .env (zamiast lokalnego pliku dotenv.py)
+python-dotenv>=1.0.1
+
+# utils.py importuje chardet do wykrywania kodowań
+chardet>=5.2.0

@@ -1,0 +1,331 @@
+{
+  "sector": "Technology",
+  "indicators": {
+    "Start-up": {
+      "main": ["revenue_growth", "gross_margin", "price_to_sales_ratio", "roe"],
+      "weights": {
+        "revenue_growth": 0.4,
+        "gross_margin": 0.3,
+        "price_to_sales_ratio": 0.2,
+        "roe": 0.1
+      },
+      "fallback": {
+        "revenue_growth": [
+          {"indicator": "earnings_growth", "weight": 0.4},
+          {"indicator": "peg_ratio", "weight": 0.35}
+        ],
+        "gross_margin": [
+          {"indicator": "operating_margin", "weight": 0.24},
+          {"indicator": "profit_margin", "weight": 0.2}
+        ],
+        "price_to_sales_ratio": [
+          {"indicator": "forward_pe", "weight": 0.16},
+          {"indicator": "price_to_book_ratio", "weight": 0.14}
+        ],
+        "roe": [
+          {"indicator": "eps_ttm", "weight": 0.08},
+          {"indicator": "profit_margin", "weight": 0.07}
+        ]
+      }
+    },
+    "Wzrost": {
+      "main": ["revenue_growth", "roe", "free_cash_flow_margin"],
+      "weights": {
+        "revenue_growth": 0.4,
+        "roe": 0.3,
+        "free_cash_flow_margin": 0.3
+      },
+      "fallback": {
+        "revenue_growth": [
+          {"indicator": "peg_ratio", "weight": 0.32},
+          {"indicator": "earnings_growth", "weight": 0.28}
+        ],
+        "roe": [
+          {"indicator": "eps_ttm", "weight": 0.24},
+          {"indicator": "profit_margin", "weight": 0.21}
+        ],
+        "free_cash_flow_margin": [
+          {"indicator": "operating_margin", "weight": 0.24},
+          {"indicator": "profit_margin", "weight": 0.21}
+        ]
+      }
+    },
+    "Dojrzałość": {
+      "main": ["roe", "free_cash_flow_margin", "debt_equity"],
+      "weights": {
+        "roe": 0.4,
+        "free_cash_flow_margin": 0.3,
+        "debt_equity": 0.3
+      },
+      "fallback": {
+        "roe": [
+          {"indicator": "profit_margin", "weight": 0.32},
+          {"indicator": "eps_ttm", "weight": 0.28}
+        ],
+        "free_cash_flow_margin": [
+          {"indicator": "operating_margin", "weight": 0.24},
+          {"indicator": "profit_margin", "weight": 0.21}
+        ],
+        "debt_equity": [
+          {"indicator": "current_ratio", "weight": 0.24},
+          {"indicator": "cash_flow_to_debt_ratio", "weight": 0.21}
+        ]
+      }
+    },
+    "Schyłek": {
+      "main": ["revenue_growth", "debt_equity", "cash_ratio"],
+      "weights": {
+        "revenue_growth": 0.3,
+        "debt_equity": 0.4,
+        "cash_ratio": 0.3
+      },
+      "fallback": {
+        "revenue_growth": [
+          {"indicator": "profit_margin", "weight": 0.24},
+          {"indicator": "earnings_growth", "weight": 0.21}
+        ],
+        "debt_equity": [
+          {"indicator": "cash_flow_to_debt_ratio", "weight": 0.32},
+          {"indicator": "current_ratio", "weight": 0.28}
+        ],
+        "cash_ratio": [
+          {"indicator": "quick_ratio", "weight": 0.24},
+          {"indicator": "current_ratio", "weight": 0.21}
+        ]
+      }
+    }
+  },
+  "scoring_thresholds": {
+    "Start-up": {
+      "revenue_growth": [
+        {"threshold": 100, "points": 80, "condition": ">"},
+        {"threshold": 80, "points": 70, "condition": ">"},
+        {"threshold": 60, "points": 60, "condition": ">"},
+        {"threshold": 50, "points": 50, "condition": ">"},
+        {"threshold": 40, "points": 40, "condition": ">"},
+        {"threshold": 30, "points": 30, "condition": ">"},
+        {"threshold": 20, "points": 20, "condition": ">"},
+        {"threshold": 10, "points": 10, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "gross_margin": [
+        {"threshold": 90, "points": 60, "condition": ">"},
+        {"threshold": 80, "points": 50, "condition": ">"},
+        {"threshold": 70, "points": 40, "condition": ">"},
+        {"threshold": 60, "points": 30, "condition": ">"},
+        {"threshold": 50, "points": 20, "condition": ">"},
+        {"threshold": 40, "points": 15, "condition": ">"},
+        {"threshold": 30, "points": 10, "condition": ">"},
+        {"threshold": 20, "points": 5, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "price_to_sales_ratio": [
+        {"threshold": 2, "points": 60, "condition": "<"},
+        {"threshold": 4, "points": 50, "condition": "<"},
+        {"threshold": 6, "points": 40, "condition": "<"},
+        {"threshold": 10, "points": 30, "condition": "<"},
+        {"threshold": 15, "points": 20, "condition": "<"},
+        {"threshold": 20, "points": 15, "condition": "<"},
+        {"threshold": 25, "points": 10, "condition": "<"},
+        {"threshold": 30, "points": 5, "condition": "<"},
+        {"threshold": 35, "points": 0, "condition": ">="}
+      ],
+      "roe": [
+        {"threshold": 10, "points": 20, "condition": ">"},
+        {"threshold": 0, "points": 10, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ]
+    },
+    "Wzrost": {
+      "revenue_growth": [
+        {"threshold": 40, "points": 80, "condition": ">"},
+        {"threshold": 30, "points": 70, "condition": ">"},
+        {"threshold": 25, "points": 60, "condition": ">"},
+        {"threshold": 20, "points": 50, "condition": ">"},
+        {"threshold": 15, "points": 40, "condition": ">"},
+        {"threshold": 10, "points": 30, "condition": ">"},
+        {"threshold": 5, "points": 20, "condition": ">"},
+        {"threshold": 0, "points": 10, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "roe": [
+        {"threshold": 40, "points": 80, "condition": ">"},
+        {"threshold": 30, "points": 70, "condition": ">"},
+        {"threshold": 25, "points": 60, "condition": ">"},
+        {"threshold": 20, "points": 50, "condition": ">"},
+        {"threshold": 15, "points": 40, "condition": ">"},
+        {"threshold": 10, "points": 30, "condition": ">"},
+        {"threshold": 5, "points": 20, "condition": ">"},
+        {"threshold": 0, "points": 10, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "free_cash_flow_margin": [
+        {"threshold": 40, "points": 80, "condition": ">"},
+        {"threshold": 30, "points": 70, "condition": ">"},
+        {"threshold": 25, "points": 60, "condition": ">"},
+        {"threshold": 20, "points": 50, "condition": ">"},
+        {"threshold": 15, "points": 40, "condition": ">"},
+        {"threshold": 10, "points": 30, "condition": ">"},
+        {"threshold": 5, "points": 20, "condition": ">"},
+        {"threshold": 0, "points": 10, "condition": ">="},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "peg_ratio": [
+        {"threshold": 0.5, "points": 80, "condition": "<"},
+        {"threshold": 1.0, "points": 70, "condition": "<"},
+        {"threshold": 1.5, "points": 60, "condition": "<"},
+        {"threshold": 2.0, "points": 50, "condition": "<"},
+        {"threshold": 2.5, "points": 40, "condition": "<"},
+        {"threshold": 3.0, "points": 30, "condition": "<"},
+        {"threshold": 3.5, "points": 20, "condition": "<"},
+        {"threshold": 4.0, "points": 10, "condition": "<"},
+        {"threshold": 4.5, "points": 0, "condition": ">="}
+      ]
+    },
+    "Dojrzałość": {
+      "roe": [
+        {"threshold": 30, "points": 80, "condition": ">"},
+        {"threshold": 25, "points": 70, "condition": ">"},
+        {"threshold": 20, "points": 60, "condition": ">"},
+        {"threshold": 15, "points": 50, "condition": ">"},
+        {"threshold": 10, "points": 40, "condition": ">"},
+        {"threshold": 5, "points": 30, "condition": ">"},
+        {"threshold": 0, "points": 20, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "free_cash_flow_margin": [
+        {"threshold": 25, "points": 70, "condition": ">"},
+        {"threshold": 20, "points": 60, "condition": ">"},
+        {"threshold": 15, "points": 50, "condition": ">"},
+        {"threshold": 10, "points": 40, "condition": ">"},
+        {"threshold": 5, "points": 30, "condition": ">"},
+        {"threshold": 0, "points": 20, "condition": ">="},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "debt_equity": [
+        {"threshold": 0.1, "points": 80, "condition": "<"},
+        {"threshold": 0.3, "points": 70, "condition": "<"},
+        {"threshold": 0.5, "points": 60, "condition": "<"},
+        {"threshold": 0.8, "points": 50, "condition": "<"},
+        {"threshold": 1.0, "points": 40, "condition": "<"},
+        {"threshold": 1.5, "points": 30, "condition": "<"},
+        {"threshold": 2.0, "points": 20, "condition": "<"},
+        {"threshold": 2.5, "points": 10, "condition": "<"},
+        {"threshold": 3.0, "points": 0, "condition": ">="}
+      ]
+    },
+    "Schyłek": {
+      "revenue_growth": [
+        {"threshold": 10, "points": 80, "condition": ">"},
+        {"threshold": 5, "points": 70, "condition": ">"},
+        {"threshold": 0, "points": 60, "condition": ">"},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ],
+      "debt_equity": [
+        {"threshold": 0.1, "points": 80, "condition": "<"},
+        {"threshold": 0.2, "points": 70, "condition": "<"},
+        {"threshold": 0.4, "points": 60, "condition": "<"},
+        {"threshold": 0.6, "points": 50, "condition": "<"},
+        {"threshold": 0.8, "points": 40, "condition": "<"},
+        {"threshold": 1.0, "points": 30, "condition": "<"},
+        {"threshold": 1.5, "points": 20, "condition": "<"},
+        {"threshold": 2.0, "points": 10, "condition": "<"},
+        {"threshold": 2.5, "points": 0, "condition": ">="}
+      ],
+      "cash_ratio": [
+        {"threshold": 2.0, "points": 80, "condition": ">"},
+        {"threshold": 1.5, "points": 70, "condition": ">"},
+        {"threshold": 1.2, "points": 60, "condition": ">"},
+        {"threshold": 1.0, "points": 50, "condition": ">"},
+        {"threshold": 0.8, "points": 40, "condition": ">"},
+        {"threshold": 0.6, "points": 30, "condition": ">"},
+        {"threshold": 0.4, "points": 20, "condition": ">"},
+        {"threshold": 0.2, "points": 10, "condition": ">="},
+        {"threshold": -1000, "points": 0, "condition": ">="}
+      ]
+    }
+  },
+  "phase_classification": {
+    "Start-up": [
+      {"indicator": "revenue_growth", "condition": ">", "value": 30, "points": 2},
+      {"indicator": "revenue_growth", "condition": ">=", "value": 10, "points": 1},
+      {"indicator": "eps_ttm", "condition": "<=", "value": 0, "points": 3},
+      {"indicator": "roe", "condition": "<", "value": 5, "points": 1},
+      {"indicator": "price_to_sales_ratio", "condition": ">", "value": 10, "points": 2},
+      {"indicator": "price_to_sales_ratio", "condition": ">=", "value": 3, "points": 0},
+      {"indicator": "free_cash_flow_margin", "condition": "<", "value": 5, "points": 1}
+    ],
+    "Wzrost": [
+      {"indicator": "revenue_growth", "condition": ">=", "value": 10, "points": 2},
+      {"indicator": "revenue_growth", "condition": ">=", "value": 0, "points": 1},
+      {"indicator": "roe", "condition": ">=", "value": 5, "points": 2},
+      {"indicator": "roe", "condition": ">", "value": 15, "points": 1},
+      {"indicator": "price_to_sales_ratio", "condition": ">=", "value": 3, "points": 2},
+      {"indicator": "price_to_sales_ratio", "condition": "<", "value": 10, "points": 1},
+      {"indicator": "free_cash_flow_margin", "condition": ">=", "value": 5, "points": 1}
+    ],
+    "Dojrzałość": [
+      {"indicator": "revenue_growth", "condition": ">=", "value": 0, "points": 2},
+      {"indicator": "revenue_growth", "condition": "<", "value": 10, "points": 1},
+      {"indicator": "roe", "condition": ">=", "value": 5, "points": 1},
+      {"indicator": "roe", "condition": ">", "value": 15, "points": 2},
+      {"indicator": "price_to_sales_ratio", "condition": "<", "value": 3, "points": 2},
+      {"indicator": "debt_equity", "condition": "<=", "value": 1, "points": 2},
+      {"indicator": "free_cash_flow_margin", "condition": ">=", "value": 2, "points": 2}
+    ],
+    "Schyłek": [
+      {"indicator": "revenue_growth", "condition": "<", "value": 0, "points": 3},
+      {"indicator": "price_to_sales_ratio", "condition": "<", "value": 3, "points": 1},
+      {"indicator": "debt_equity", "condition": "<=", "value": 1, "points": 1}
+    ]
+  },
+  "trend_modifiers": {
+    "Start-up": [
+      {"indicator": "revenue_growth", "condition": "3_quarterly_increases", "points": 5},
+      {"indicator": "revenue_growth", "condition": "2_quarterly_decreases", "points": -10}
+    ],
+    "Wzrost": [
+      {"indicator": "revenue_growth", "condition": "3_quarterly_increases", "points": 5},
+      {"indicator": "revenue_growth", "condition": "2_quarterly_decreases", "points": -10}
+    ],
+    "Dojrzałość": [
+      {"indicator": "revenue_growth", "condition": "3_quarterly_increases", "points": 5},
+      {"indicator": "revenue_growth", "condition": "2_quarterly_decreases", "points": -10}
+    ],
+    "Schyłek": [
+      {"indicator": "revenue_growth", "condition": "3_quarterly_increases", "points": 5},
+      {"indicator": "revenue_growth", "condition": "2_quarterly_decreases", "points": -10}
+    ]
+  },
+  "modifiers": {
+    "Start-up": [
+      {
+        "name": "Momentum Bonus",
+        "condition": {"indicator": "revenue_growth", "growth_increase": 20, "previous_year": true},
+        "points": 5
+      }
+    ],
+    "Wzrost": [
+      {
+        "name": "Momentum Bonus",
+        "condition": {"indicator": "revenue_growth", "growth_increase": 20, "previous_year": true},
+        "points": 5
+      }
+    ]
+  },
+  "documentation": {
+    "description": "Konfiguracja dla sektora Technology określa główne i zastępcze wskaźniki dla każdej fazy rozwoju (Start-up, Wzrost, Dojrzałość, Schyłek) oraz progi punktacji. Wszystkie wartości procentowe są zapisane w formacie liczbowym (np. 58 zamiast 58% lub 0.58).",
+    "fields": {
+      "indicators": "Definiuje główne i zastępcze wskaźniki oraz ich wagi dla każdej fazy.",
+      "scoring_thresholds": "Progi punktacji dla każdego wskaźnika, z wartościami w formacie liczbowym. Ujemne wartości są traktowane jako 0 w punktacji.",
+      "phase_classification": "Kryteria klasyfikacji fazy na podstawie punktacji wskaźników.",
+      "trend_modifiers": "Punktacja za trendy przychodów (np. 3 kwartały wzrostu = +5 pkt).",
+      "modifiers": "Dodatkowe modyfikatory punktacji, np. bonusy za momentum."
+    },
+    "percent_fields": [
+      "revenue_growth", "gross_margin", "roe", "free_cash_flow_margin",
+      "operating_margin", "profit_margin", "earnings_growth"
+    ],
+    "notes": "Wartości procentowe są zapisywane jako liczby (np. 36.5 dla 36.5%). Ujemne wartości PEG Ratio są pomijane. Dynamiczne progi są obliczane na podstawie średnich sektorowych, jeśli dostępnych jest co najmniej 3 spółek. Ujemne wartości wskaźników są traktowane jako 0 w punktacji, ale zapisywane jako ujemne w danych."
+  }
+}

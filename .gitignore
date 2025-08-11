@@ -1,0 +1,19 @@
+# venv & IDE
+.venv/
+env/
+venv/
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+
+# lokalne dane/logi
+data/
+error.log
+errors_only.log
+*.log
+
+# pliki cache/ploty tymczasowe
+*.png
+*.svg
+.DS_Store
