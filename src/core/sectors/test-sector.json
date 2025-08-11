@@ -1,0 +1,38 @@
+{
+  "sector": "Test-Sector",
+  "indicators": {
+    "Wzrost": {
+      "main": ["revenue_growth", "roe", "free_cash_flow_margin"],
+      "fallback": {
+        "revenue_growth": [
+          {"indicator": "earnings_growth", "weight": 0.9}
+        ]
+      }
+    }
+  },
+  "scoring_thresholds": {
+    "Wzrost": {
+      "revenue_growth": [
+        {"threshold": 5, "points": 10, "condition": ">"},
+        {"threshold": 0, "points": 5, "condition": ">="},
+        {"threshold": 0, "points": 0, "condition": "<"}
+      ],
+      "roe": [
+        {"threshold": 1, "points": 10, "condition": ">"},
+        {"threshold": 0, "points": 5, "condition": ">="},
+        {"threshold": 0, "points": 0, "condition": "<"}
+      ],
+      "free_cash_flow_margin": [
+        {"threshold": 0, "points": 10, "condition": ">="},
+        {"threshold": 0, "points": 0, "condition": "<"}
+      ]
+    }
+  },
+  "phase_classification": {
+    "Wzrost": [
+      {"indicator": "revenue_growth", "condition": ">=", "value": 0},
+      {"indicator": "roe", "condition": ">=", "value": 0},
+      {"indicator": "free_cash_flow_margin", "condition": ">=", "value": 0}
+    ]
+  }
+}

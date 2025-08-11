@@ -1,0 +1,36 @@
+# ŚCIEŻKA: C:\Users\Msi\Desktop\analizator\.gitignore
+# Pliki wrażliwe i lokalne
+.env
+.env.*
+*.env
+*.key
+*.pem
+
+# Logi
+*.log
+*.log.*
+error.log
+errors_only.log
+logs/
+
+# Dane użytkownika
+data/
+
+# Artefakty testów/coverage
+htmlcov/
+.pytest_cache/
+.coverage
+coverage.xml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Wirtualne środowiska
+.venv/
+venv/
+
+# Systemowe
+.DS_Store
+Thumbs.db

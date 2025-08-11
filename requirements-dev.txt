@@ -1,0 +1,7 @@
+pytest>=8.4.1
+flake8>=7.1.1
+black>=24.8.0
+coverage>=7.6.1
+pytest-mock>=3.14.0
+responses>=0.25.0
+tk
