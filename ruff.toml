@@ -1,0 +1,12 @@
+line-length = 120
+
+[lint]
+select = ["E", "F", "W"]
+ignore = []
+
+[format]
+line-ending = "lf"
+
+[lint.per-file-ignores]
+# W testach akceptujemy dłuższe linie i luźniejszy odstęp
+"tests/*" = ["E501", "E302", "F401"]

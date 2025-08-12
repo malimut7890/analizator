@@ -6,6 +6,8 @@ from unittest.mock import Mock
 from src.gui.momentum_tab import MomentumTab
 from src.core.company_data import CompanyData
 from src.core.logging_config import setup_logging
+from unittest.mock import patch
+
 
 @pytest.fixture
 def setup_logging_fixture():

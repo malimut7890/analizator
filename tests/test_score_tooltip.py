@@ -1,5 +1,6 @@
 # ŚCIEŻKA: C:\Users\Msi\Desktop\analizator\tests\test_score_tooltip.py
-import json, os
+from x import a
+from x import b
 from src.gui.score_tooltip import build_score_tooltip_for_ticker
 
 def test_build_score_tooltip_for_ticker(tmp_path):
