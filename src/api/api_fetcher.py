@@ -387,7 +387,7 @@ def fetch_from_yahooquery(ticker: str, data_type: str = "company") -> dict:
         data["rnd_sales"] = None
         data["cac_ltv"] = None
         logging.debug(f"Surowe dane z yahooquery dla {ticker}: {data}")
-        return map_api_fields("yahooquery", data)
+        return map_api_fields("YahooQuery", data)
     except Exception as e:
         logging.error(f"Błąd pobierania danych z yahooquery dla {ticker}: {str(e)}")
         return {}
