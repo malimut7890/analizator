@@ -1,0 +1,34 @@
+version: 1
+codex:
+  working_branch_prefix: "codex/fixes"
+  change_mode: "full_file"
+  create_pull_request: true
+  pull_request_title_template: "Codex: Kompleksowe poprawki – {issue_or_context}"
+  pull_request_labels: ["codex", "auto-fix", "full-file"]
+  respect_existing_behavior: true
+  propagate_related_changes: true
+  deletion_policy:
+    allow_unrelated_deletions: false
+    allow_file_removals: false
+    allow_large_block_removals: false
+  testing:
+    run_tests: true
+    test_command: "pytest -q"
+  linting:
+    enabled: true
+    commands:
+      - "ruff check ."
+      - "ruff format --check ."
+  commit_message_template: |
+    chore(codex): {summary}
+
+    Zakres:
+    - Pełne pliki (full-file patch).
+    - Zachowana istniejąca funkcjonalność.
+    - Zmiany rozpropagowane do plików zależnych.
+    - Brak usuwania kodu/plików poza zakresem naprawy.
+
+    Uzasadnienie:
+    {rationale}
+policies:
+  - path: ".codex/policies.md"
